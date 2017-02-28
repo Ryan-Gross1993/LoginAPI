@@ -19,14 +19,12 @@ public class Login {
     }
 
     public String getActualName() {
-
         return actualName;
     }
 
     public String getActualPassword() {
         return actualPassword;
     }
-
 
     public static String getUserName() {
         return userName;
@@ -44,8 +42,9 @@ public class Login {
         }
     }
 
-    public Login() {
-
+    public Login(String username, String password) {
+      this.actualName = username;
+      this.actualPassword = password;
     }
 }
 

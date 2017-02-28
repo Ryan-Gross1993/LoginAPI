@@ -11,22 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class LoginContoller {
 
-    Login newLogin = new Login();
-
-    @RequestMapping(value = "/send",
-    method = {RequestMethod.POST},
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseStatus(value = HttpStatus.OK)
-    public void place(@RequestBody JSONObject object) {
-
-
-        newLogin.setActualName(object.getString("username"));
-        newLogin.setActualPassword(object.getString("password"));
-
-    }
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public boolean getAuth() {
-        return newLogin.isLegit();
+    @RequestMapping(value = "/send", method="RequestMethod.POST", produces="text/plain")
+    @ResponseBody
+    public String login(String name, String password) {
+        Login user = new Login(name, password);
+        return user.isLegit();
     }
 
 }
